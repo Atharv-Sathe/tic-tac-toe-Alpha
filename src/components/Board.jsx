@@ -31,11 +31,10 @@ function Board({squares, xIsNext, onPlay, onReset}) {
 
     const winner = calculateWinner(squares);
     let status;
-    // status = winner ? `Winner: ${winner}` : `Next Player: ${xIsNext ? 'X' : 'O'}`;
-    if (isDraw(squares)) {
-        status = 'Draw';
-    } else if (winner) {
+    if (winner) {
         status = `Winner: ${winner}`;
+    } else if (isDraw(squares)) {
+        status = 'Draw';
     } else {
         status = `Next Player: ${xIsNext ? 'X' : 'O'}`;
     }
