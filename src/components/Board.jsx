@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 
 function Square({value, onSquareClick}) {
@@ -16,7 +16,7 @@ function Reset({onResetClick}) {
 
 }
 
-function Board({squares, xIsNext, onPlay, onReset}) {
+function Board({squares, xIsNext, onPlay, onReset, setIsActive}) {
 
     const handleClick = (i) => {
         if (squares[i] || calculateWinner(squares) || isDraw(squares)) return;
@@ -33,8 +33,10 @@ function Board({squares, xIsNext, onPlay, onReset}) {
     let status;
     if (winner) {
         status = `Winner: ${winner}`;
+        setIsActive(false)
     } else if (isDraw(squares)) {
         status = 'Draw';
+        setIsActive(false);
     } else {
         status = `Next Player: ${xIsNext ? 'X' : 'O'}`;
     }
@@ -44,27 +46,18 @@ function Board({squares, xIsNext, onPlay, onReset}) {
         <div className="my-2 p-10 shadow-golden-glow rounded-lg  bg-amber-600 flex-col items-center">
 
             <div className="board-row one flex">
-            {/* <button id="btn1" className="square w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn2" className="square w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn3" className="square w-14 h-14 m-0 p-2 border  text-white">X</button> */}
                 <Square value={squares[0]} onSquareClick={_ => handleClick(0)}  />
                 <Square value={squares[1]} onSquareClick={_ => handleClick(1)}  />
                 <Square value={squares[2]} onSquareClick={_ => handleClick(2)}  />
             </div>
 
             <div className="board-row two flex">
-            {/* <button id="btn4" className="square w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn5" className="square w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn6" className="square w-14 h-14 m-0 p-2 border  text-white">X</button> */}
                 <Square value={squares[3]} onSquareClick={_ => handleClick(3)}  />
                 <Square value={squares[4]} onSquareClick={_ => handleClick(4)}  />
                 <Square value={squares[5]} onSquareClick={_ => handleClick(5)}  />
             </div>
 
             <div className="board-row three flex">
-            {/* <button id="btn7" className="square value={squares[4]} w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn8" className="square w-14 h-14 m-0 p-2 border  text-white">X</button>
-            <button id="btn9" className="square w-14 h-14 m-0 p-2 border  text-white">X</button> */}
                 <Square value={squares[6]} onSquareClick={_ => handleClick(6)} />
                 <Square value={squares[7]} onSquareClick={_ => handleClick(7)} />
                 <Square value={squares[8]} onSquareClick={_ => handleClick(8)} />

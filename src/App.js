@@ -1,6 +1,6 @@
 import './App.css';
 import Heading from './components/Heading.jsx';
-import ArenaHeading from './components/ArenaHeading.jsx';
+import ArenaHeader from './components/ArenaHeader.jsx';
 import Game from './components/Game.jsx';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       </div>
 
       <div id='arena'  className='flex-col p-4'>
-        <ArenaHeading />
+        <ArenaHeader />
         <Game />
       </div>
 
